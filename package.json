@@ -26,6 +26,7 @@
   "homepage": "https://github.com/ArunKumarSehrawat/divim#readme",
   "dependencies": {
     "boxen": "^7.1.0",
+    "chalk": "^5.2.0",
     "cli-color": "^2.0.3",
     "dotenv": "^16.0.3",
     "enquirer": "^2.3.6",

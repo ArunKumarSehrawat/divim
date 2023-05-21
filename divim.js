@@ -12,17 +12,17 @@ import color from "cli-color";
 import path from "node:path";
 import { exec } from "node:child_process";
 import fs from "node:fs";
-import { isDirectoryOrFile, loadFileEditor } from "./utils.js";
+import { isDirectoryOrFile } from "./utils.js";
+import openFileEditor from "./fileEditor.js";
+import Chalk from "chalk";
+
+// process.stdout.write(color.reset);
+// process.stdout.write(color.erase.screenLeft);
 
 export const print = console.log;
 const CURRENT_WORKING_DIRECTORY = process.cwd();
 const ARG_Path = path.join(CURRENT_WORKING_DIRECTORY, process.argv[2] || ".");
 const PATH_TYPE = await isDirectoryOrFile(ARG_Path);
-
-// clear terminal
-// exec("clear", function(error, stdout, stderr) {
-//     print(stdout)
-// });
 
 switch (PATH_TYPE) {
     case "DIRECTORY": {
@@ -30,10 +30,13 @@ switch (PATH_TYPE) {
         break;
     }
     case "FILE": {
-        loadFileEditor(ARG_Path);
+        openFileEditor(ARG_Path);
         break;
     }
     default:
         print(color.red("Please provide path to either a FILE or DIRECTORY"));
         break;
 }
+
+
+// print(Chalk.bgRgb(64, 150, 255).rgb(64, 150, 255)("\u0020"));
